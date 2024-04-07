@@ -1,0 +1,11 @@
+POST http://localhost:3000/books/books HTTP/1.1
+Content-Type: application/json
+
+{
+    "title": "The Great Gatsby",
+    "author": ["F. Scott Fitzgerald"],
+    "isbn": "9780743273565",
+    "publicationDate": "1925-04-10",
+    "genre": ["Classic", "Fiction"],
+    "status": "available"
+}
