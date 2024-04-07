@@ -13,7 +13,7 @@
       "description": "Everything about your Books"
     }
   ],
-  "schemes": ["http"],
+  "schemes": ["https"],
   "paths": {
     "/books": {
       "get": {
