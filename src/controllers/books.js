@@ -1,6 +1,15 @@
 const mongodb = require('../db/connect');
 const ObjectId = require('mongodb').ObjectId;
 
+const getAll = async (req, res, next) => {
+  const result = await mongodb.getDb().db('librarydb').collection('books').find();
+
+  result.toArray().then((lists) => {
+    res.setHeader('Content-Type', 'application/json');
+    res.status(200).json(lists);
+  });
+};
+
 const addBook = async (req, res) => {
   const contact = {
     title: req.body.title,
@@ -20,5 +29,6 @@ const addBook = async (req, res) => {
 
 
 module.exports = {
+  getAll,
   addBook
 };
