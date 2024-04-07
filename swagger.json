@@ -1,0 +1,105 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "This is a simple API for managing books in a library database.",
+    "version": "1.0.0",
+    "title": "Library Books API"
+  },
+  "host": "localhost:3000",
+  "basePath": "/",
+  "tags": [
+    {
+      "name": "books",
+      "description": "Everything about your Books"
+    }
+  ],
+  "schemes": ["http"],
+  "paths": {
+    "/books": {
+      "get": {
+        "tags": ["books"],
+        "summary": "Get all books",
+        "description": "Returns a list of books",
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "A list of books",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Book"
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["books"],
+        "summary": "Add a new book",
+        "description": "Adds a new book to the library database",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Book object that needs to be added to the store",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Book"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Book created"
+          },
+          "500": {
+            "description": "Error occurred"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Book": {
+      "type": "object",
+      "required": [
+        "title",
+        "author",
+        "isbn",
+        "publicationDate",
+        "genre",
+        "status"
+      ],
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "author": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "isbn": {
+          "type": "string"
+        },
+        "publicationDate": {
+          "type": "string",
+          "format": "date"
+        },
+        "genre": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "status": {
+          "type": "string",
+          "enum": ["available", "checked out", "reserved", "not available"]
+        }
+      }
+    }
+  }
+}
