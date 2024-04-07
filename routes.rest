@@ -13,3 +13,19 @@ Content-Type: application/json
     "genre": ["Classic", "Fiction"],
     "status": "available"
 }
+
+### Update a book
+PUT http://localhost:3000/books/661329fc65472ae151369839 HTTP/1.1
+Content-Type: application/json
+
+{
+    "title": "The Great Gatsby",
+    "author": ["F. Scott Fitzgerald"],
+    "isbn": "9780743273565",
+    "publicationDate": "1925-04-10",
+    "genre": ["Novel", "Tragedy", "Literary fiction"],
+    "status": "available"
+}
+
+### Delete a book
+DELETE  http://localhost:3000/books/66130ea00f8dc8e572d34292 HTTP/1.1

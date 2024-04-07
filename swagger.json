@@ -59,6 +59,117 @@
           }
         }
       }
+    },
+    "/books/{id}": {
+      "put": {
+        "tags": ["books"],
+        "summary": "Update an existing book",
+        "description": "Updates an existing book with new information",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string",
+            "description": "ID of the book to update"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Book object with updated information",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Book"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Book successfully updated"
+          },
+          "404": {
+            "description": "Book not found"
+          },
+          "500": {
+            "description": "Error occurred"
+          }
+        }
+      },
+      "delete": {
+        "tags": ["books"],
+        "summary": "Delete a book",
+        "description": "Deletes a book from the library database",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string",
+            "description": "ID of the book to delete"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Book successfully deleted"
+          },
+          "404": {
+            "description": "Book not found"
+          },
+          "500": {
+            "description": "Error occurred"
+          }
+        }
+      }
+    },
+    "/books/checkOut/{id}": {
+      "put": {
+        "tags": ["books"],
+        "summary": "Check out a book",
+        "description": "Marks a book as checked out and unavailable",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string",
+            "description": "ID of the book to check out"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Book checked out successfully"
+          },
+          "404": {
+            "description": "Book not available for checkout"
+          }
+        }
+      }
+    },
+    "/books/checkIn/{id}": {
+      "put": {
+        "tags": ["books"],
+        "summary": "Check in a book",
+        "description": "Marks a book as checked in and available",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string",
+            "description": "ID of the book to check in"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Book checked in successfully"
+          },
+          "404": {
+            "description": "Book is already available for checkout"
+          }
+        }
+      }
     }
   },
   "definitions": {
