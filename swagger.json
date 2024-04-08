@@ -1,7 +1,7 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "Libarary API",
+    "title": "Library API",
     "description": "Library API",
     "version": "1.0.0"
   },
